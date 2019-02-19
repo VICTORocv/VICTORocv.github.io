@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="技术,网络,RPC,HTTP,">
+  <meta name="keywords" content="技术,设计模式,设计模式六大原则,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="区别TCP在真正读写之前需要进行“三次握手”建立连接，传输数据后立即关闭连接的是短连接，不主动关闭的是长连接。1）短连接：一般只会在client/server间传递一次读写操作。一次读写完成后，一般是客户端发起close操作，服务器端一般不会立即关闭连接。2）长连接：client/server间传递一次读写操作后，连接不主动关闭，后续读写操作继续使用这个连接。 心跳包当建立TCP连接后，会关联一系">
-<meta name="keywords" content="技术,网络,RPC,HTTP">
+<meta name="description" content="实习项目中主要用到的4种工厂、单例、适配器和监听器（listener等），未来可能会用到builder模式。 六大原则  开闭、里氏代换、依赖倒转、接口隔离、迪米特法则（最少知道原则）和合成复用。   类型创建型、结构型和行为型（J2EE型也可以算为一个类型）。 使用设计模式的好处降低耦合并增强复用性。 对接口编程而不是对实现编程单例模式1）volatile和synchronized关键字配合使用">
+<meta name="keywords" content="技术,设计模式,设计模式六大原则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="长连接与短连接">
-<meta property="og:url" content="http://yoursite.com/2019/02/16/长连接与短连接/index.html">
+<meta property="og:title" content="设计模式最基本概念">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/设计模式最基本概念/index.html">
 <meta property="og:site_name" content="Victor&#39;s Blog">
-<meta property="og:description" content="区别TCP在真正读写之前需要进行“三次握手”建立连接，传输数据后立即关闭连接的是短连接，不主动关闭的是长连接。1）短连接：一般只会在client/server间传递一次读写操作。一次读写完成后，一般是客户端发起close操作，服务器端一般不会立即关闭连接。2）长连接：client/server间传递一次读写操作后，连接不主动关闭，后续读写操作继续使用这个连接。 心跳包当建立TCP连接后，会关联一系">
+<meta property="og:description" content="实习项目中主要用到的4种工厂、单例、适配器和监听器（listener等），未来可能会用到builder模式。 六大原则  开闭、里氏代换、依赖倒转、接口隔离、迪米特法则（最少知道原则）和合成复用。   类型创建型、结构型和行为型（J2EE型也可以算为一个类型）。 使用设计模式的好处降低耦合并增强复用性。 对接口编程而不是对实现编程单例模式1）volatile和synchronized关键字配合使用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T07:27:45.415Z">
+<meta property="og:updated_time" content="2019-02-19T07:28:30.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="长连接与短连接">
-<meta name="twitter:description" content="区别TCP在真正读写之前需要进行“三次握手”建立连接，传输数据后立即关闭连接的是短连接，不主动关闭的是长连接。1）短连接：一般只会在client/server间传递一次读写操作。一次读写完成后，一般是客户端发起close操作，服务器端一般不会立即关闭连接。2）长连接：client/server间传递一次读写操作后，连接不主动关闭，后续读写操作继续使用这个连接。 心跳包当建立TCP连接后，会关联一系">
+<meta name="twitter:title" content="设计模式最基本概念">
+<meta name="twitter:description" content="实习项目中主要用到的4种工厂、单例、适配器和监听器（listener等），未来可能会用到builder模式。 六大原则  开闭、里氏代换、依赖倒转、接口隔离、迪米特法则（最少知道原则）和合成复用。   类型创建型、结构型和行为型（J2EE型也可以算为一个类型）。 使用设计模式的好处降低耦合并增强复用性。 对接口编程而不是对实现编程单例模式1）volatile和synchronized关键字配合使用">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/16/长连接与短连接/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/19/设计模式最基本概念/">
 
 
 
 
 
-  <title>长连接与短连接 | Victor's Blog</title>
+  <title>设计模式最基本概念 | Victor's Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/长连接与短连接/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/设计模式最基本概念/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Victor">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">长连接与短连接</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式最基本概念</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T23:58:08+08:00">
-                2019-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-19T15:00:53+08:00">
+                2019-02-19
               </time>
             
 
@@ -320,13 +320,16 @@
       
 
       
-        <h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>TCP在真正读写之前需要进行“三次握手”建立连接，传输数据后立即关闭连接的是短连接，不主动关闭的是长连接。<br>1）短连接：一般只会在client/server间传递一次读写操作。一次读写完成后，一般是客户端发起close操作，服务器端一般不会立即关闭连接。<br>2）长连接：client/server间传递一次读写操作后，连接不主动关闭，后续读写操作继续使用这个连接。</p>
-<h2 id="心跳包"><a href="#心跳包" class="headerlink" title="心跳包"></a>心跳包</h2><p>当建立TCP连接后，会关联一系列定时器，其中一些定时器与保活程序相关。当保活定时器到0时，可以发送一个没有数据的保活探测包，如果远程连接回复一个没有数据的包，那么可以确定这个连接仍然有效。（也可以是很小的包）<br>因为TCP是面向流的协议，所以一个0长度的包对用户程序没有危害。</p>
-<h2 id="客户端最大长连接数"><a href="#客户端最大长连接数" class="headerlink" title="客户端最大长连接数"></a>客户端最大长连接数</h2><p>  如果客户端连接太多长连接，服务器端压力很大，如果能关闭一些没有读写事件发生的连接，可以减轻服务器端压力。</p>
-<h2 id="某些RPC比HTTP请求快的原因"><a href="#某些RPC比HTTP请求快的原因" class="headerlink" title="某些RPC比HTTP请求快的原因"></a>某些RPC比HTTP请求快的原因</h2><p>  http使用http协议，某些rpc使用自定义的tcp协议，比http少了应用层，表示层，会话层，这3层；数据包更小。</p>
-<h2 id="其他——HTTP与RPC的关系"><a href="#其他——HTTP与RPC的关系" class="headerlink" title="其他——HTTP与RPC的关系"></a>其他——HTTP与RPC的关系</h2><p>  rpc库相对于http容器来说，封装了“服务发现”、“错误重试”一类面相服务的高级特性。</p>
+        <h2 id="实习项目中主要用到的4种"><a href="#实习项目中主要用到的4种" class="headerlink" title="实习项目中主要用到的4种"></a>实习项目中主要用到的4种</h2><p>工厂、单例、适配器和监听器（listener等），未来可能会用到builder模式。</p>
+<h2 id="六大原则"><a href="#六大原则" class="headerlink" title="六大原则"></a>六大原则</h2><font color="#FF0000">  开闭、里氏代换、依赖倒转、接口隔离、迪米特法则（最少知道原则）和合成复用。 </font>
+
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>创建型、结构型和行为型（J2EE型也可以算为一个类型）。</p>
+<h2 id="使用设计模式的好处"><a href="#使用设计模式的好处" class="headerlink" title="使用设计模式的好处"></a>使用设计模式的好处</h2><p>降低耦合并增强复用性。</p>
+<h2 id="对接口编程而不是对实现编程"><a href="#对接口编程而不是对实现编程" class="headerlink" title="对接口编程而不是对实现编程"></a>对接口编程而不是对实现编程</h2><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>1）volatile和synchronized关键字配合使用（双重检查）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">  private volatile static Singleton singleton;</span><br><span class="line">  private Singleton ()&#123;&#125;</span><br><span class="line">  public static Singleton getSingleton() &#123;</span><br><span class="line">    if (singleton == null) &#123;</span><br><span class="line">      synchronized (Singleton.class) &#123;</span><br><span class="line">        if (singleton == null) &#123;</span><br><span class="line">          singleton = new Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>volatile变量具有synchronized的可见性特性（修饰的成员变量在每次被线程访问时，都强迫从共享内存中重读该成员变量的值。而且，当成员变量发生变化时，强迫线程将变化值回写到共享内存。这样在任何时刻，两个不同的线程总是看到某个成员变量的同一个值），但不具备原子特性（不可再分的操作）。<br>Java中除了long和double类型外都是原子操作。<br>2）枚举实现单例模式<br>对于一个标准的enum单例模式，最优秀的写法还是实现接口的形式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 定义单例模式中需要完成的代码逻辑</span><br><span class="line">public interface MySingleton &#123;</span><br><span class="line">  void doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum Singleton implements MySingleton &#123;</span><br><span class="line">  INSTANCE &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void doSomething() &#123;</span><br><span class="line">      System.out.println(&quot;complete singleton&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  public static MySingleton getInstance() &#123;</span><br><span class="line">    return Singleton.INSTANCE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="synchronized加锁锁代码块而不锁方法"><a href="#synchronized加锁锁代码块而不锁方法" class="headerlink" title="synchronized加锁锁代码块而不锁方法"></a>synchronized加锁锁代码块而不锁方法</h2><h2 id="动态代理和静态代理"><a href="#动态代理和静态代理" class="headerlink" title="动态代理和静态代理"></a>动态代理和静态代理</h2><p>Spring中的容器代替工厂，Spring AOP代替JDK动态代理，实现面相切面编程。</p>
 <hr>
-<p>参考：<br>[1] <a href="http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/" target="_blank" rel="noopener">http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/</a><br>[2] <a href="https://www.zhihu.com/question/41609070/answer/191965937" target="_blank" rel="noopener">https://www.zhihu.com/question/41609070/answer/191965937</a></p>
+<p>参考：<br>[1] <a href="https://km.sankuai.com/page/110454293" target="_blank" rel="noopener">https://km.sankuai.com/page/110454293</a><br>[2] <a href="http://www.runoob.com/design-pattern/design-pattern-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/design-pattern/design-pattern-tutorial.html</a></p>
 
       
     </div>
@@ -346,11 +349,9 @@
           
             <a href="/tags/技术/" rel="tag"># 技术</a>
           
-            <a href="/tags/网络/" rel="tag"># 网络</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
-            <a href="/tags/RPC/" rel="tag"># RPC</a>
-          
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+            <a href="/tags/设计模式六大原则/" rel="tag"># 设计模式六大原则</a>
           
         </div>
       
@@ -363,15 +364,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/16/长连接与短连接/" rel="next" title="长连接与短连接">
+                <i class="fa fa-chevron-left"></i> 长连接与短连接
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/19/设计模式最基本概念/" rel="prev" title="设计模式最基本概念">
-                设计模式最基本概念 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -494,7 +495,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心跳包"><span class="nav-number">2.</span> <span class="nav-text">心跳包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端最大长连接数"><span class="nav-number">3.</span> <span class="nav-text">客户端最大长连接数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某些RPC比HTTP请求快的原因"><span class="nav-number">4.</span> <span class="nav-text">某些RPC比HTTP请求快的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他——HTTP与RPC的关系"><span class="nav-number">5.</span> <span class="nav-text">其他——HTTP与RPC的关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实习项目中主要用到的4种"><span class="nav-number">1.</span> <span class="nav-text">实习项目中主要用到的4种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六大原则"><span class="nav-number">2.</span> <span class="nav-text">六大原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">3.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用设计模式的好处"><span class="nav-number">4.</span> <span class="nav-text">使用设计模式的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对接口编程而不是对实现编程"><span class="nav-number">5.</span> <span class="nav-text">对接口编程而不是对实现编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">6.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized加锁锁代码块而不锁方法"><span class="nav-number">7.</span> <span class="nav-text">synchronized加锁锁代码块而不锁方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理和静态代理"><span class="nav-number">8.</span> <span class="nav-text">动态代理和静态代理</span></a></li></ol></div>
             
 
           </div>
