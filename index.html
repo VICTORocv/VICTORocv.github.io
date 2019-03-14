@@ -325,9 +325,8 @@ openId是微信小程序官方提供的用户唯一标识，微信小程序相�
 
 目的相比在微信小程序中获取用户手机号，获取openId不仅更方便，而且避免了用户因为手机换号而不能唯一区分用户的问题。
 流程图我利用了微信小程序的缓存做了openId的获取与存储
-获取openId的方法首先要在小程序端调用wx.login()接口获取code，传送到服务器端后加上小程序 appId、appSecret等调用微信code2Session接口获取session_key和openId等数据。
-
-          
+获取openId的方法首先要在小程序端调用wx.login()接口获取code，传送到服务器端后加上小程序 appId、appSecret等调用微信code2Session接口获取session_key和openId等数据。1234567891
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/03/14/微信小程序登录：如何唯一区分用户/#more" rel="contents">
