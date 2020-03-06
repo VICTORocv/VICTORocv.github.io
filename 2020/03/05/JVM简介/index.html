@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="技术,JVM,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Victor&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/RPC/index.html">
+<meta name="description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
+<meta name="keywords" content="技术,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM简介">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/JVM简介/index.html">
 <meta property="og:site_name" content="Victor&#39;s Blog">
+<meta property="og:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-06T09:06:36.894Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Victor&#39;s Blog">
+<meta name="twitter:title" content="JVM简介">
+<meta name="twitter:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/RPC/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/05/JVM简介/">
 
 
 
 
 
-  <title>Tag: RPC | Victor's Blog</title>
+  <title>JVM简介 | Victor's Blog</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -234,52 +239,150 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>RPC<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/JVM简介/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/16/长连接与短连接/" itemprop="url">
-              
-                <span itemprop="name">长连接与短连接</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JVM简介</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-16T23:58:08+08:00" content="2019-02-16">
-          02-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-05T23:33:30+08:00">
+                2020-03-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>JVM（Java虚拟机）主要分为五大模块：类装载器子系统、<strong>运行时数据区</strong>、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。</p>
+<h2 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h2><p>相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。<br>JVM在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。<br>1.程序计数器<br>2.虚拟机栈<br>3.本地方法栈<br>4.堆<br>5.方法区<br>（运行时常量池）</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/27/JDK源码分析——ArrayList类remove/" rel="next" title="JDK源码分析——ArrayList类remove">
+                <i class="fa fa-chevron-left"></i> JDK源码分析——ArrayList类remove
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -287,6 +390,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -307,8 +414,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -359,6 +475,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组成"><span class="nav-number">1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区"><span class="nav-number">2.</span> <span class="nav-text">运行时数据区</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -495,6 +627,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
