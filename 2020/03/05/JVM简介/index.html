@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
+<meta name="description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题（比如内存溢出），我们仍然需要依靠对JVM内存的了解和一些辅助工具去排查与解决。一般">
 <meta name="keywords" content="技术,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM简介">
 <meta property="og:url" content="http://yoursite.com/2020/03/05/JVM简介/index.html">
 <meta property="og:site_name" content="Victor&#39;s Blog">
-<meta property="og:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
+<meta property="og:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题（比如内存溢出），我们仍然需要依靠对JVM内存的了解和一些辅助工具去排查与解决。一般">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-06T09:06:36.894Z">
+<meta property="og:updated_time" content="2020-03-30T08:20:21.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM简介">
-<meta name="twitter:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。JVM在执行Java程序的过程中会">
+<meta name="twitter:description" content="组成JVM（Java虚拟机）主要分为五大模块：类装载器子系统、运行时数据区、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。 运行时数据区相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题（比如内存溢出），我们仍然需要依靠对JVM内存的了解和一些辅助工具去排查与解决。一般">
 
 
 
@@ -321,7 +321,12 @@
 
       
         <h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>JVM（Java虚拟机）主要分为五大模块：类装载器子系统、<strong>运行时数据区</strong>、执行引擎、本地方法接口和垃圾收集模块。其中运行时数据区是各种JVM必备的，人们也通常比较关心这个模块。</p>
-<h2 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h2><p>相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题，我们仍然需要依靠对JVM内存的了解去排查与解决。<br>JVM在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。<br>1.程序计数器<br>2.虚拟机栈<br>3.本地方法栈<br>4.堆<br>5.方法区<br>（运行时常量池）</p>
+<h2 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h2><p>相比于C/C++程序员来说，Java程序员不需要费心为每一个new操作去写配对的delete/free代码。但是如果出现问题（比如内存溢出），我们仍然需要依靠对JVM内存的了解和一些辅助工具去排查与解决。<br>一般来说，JVM的内存是指运行时数据区，JVM在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域，这些我们排查问题时关心的内存区域主要有以下6个。</p>
+<h3 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1.程序计数器"></a>1.程序计数器</h3><p>字节码解释器通过改变程序计数器（Program Counter Register）的值来选择下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。<br>每个线程都有一个独立的程序计数器，称之为“线程私有”的内存。<br>此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError的区域。</p>
+<h3 id="2-虚拟机栈"><a href="#2-虚拟机栈" class="headerlink" title="2.虚拟机栈"></a>2.虚拟机栈</h3><p>虚拟机栈与方法有关，它描述的是Java方法执行的内存模型：每个方法在执行的同时都会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。<br>局部变量表存放了编译期可知的各种基本数据类型、对象引用和returnAddress类型。<br>JVM规范中对此区域规定了两种异常情况：如果线程请求的栈深度大于虚拟机所规定的深度，将抛出StackOverflowError；如果虚拟机栈可以动态扩展（当前大部分JVM都可以），如果扩展时无法申请到足够的内存，就会抛出OutOfMemoryError。<br>此内存区域也是线程私有的，它的生命周期与线程相同。</p>
+<h3 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h3><p>它与虚拟机栈发挥的作用类似，虚拟机栈为虚拟机执行Java方法服务，而本地方法栈为虚拟机使用到的Native方法服务。因为JVM规范中对本地方法栈没有明确规定，有的虚拟机直接将它和虚拟机栈合二为一。<br>它抛出的异常同虚拟机栈。</p>
+<h3 id="4-堆"><a href="#4-堆" class="headerlink" title="4.堆"></a>4.堆</h3><p>对于大多数应用来说，Java堆是JVM管理的内存中最大的一块，用来存放对象实例，几乎所有对象实例都在堆上分配；可以处在物理上不连续的内存空间中，只需要保证逻辑上连续。由于它是垃圾收集器管理的主要区域，因此也被称为“GC堆”。<br>它是所有线程共享的，在虚拟机启动时创建，当前主流虚拟机的堆都是可扩展的，如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError（可以通过-Xmx和-Xms控制）。</p>
+<h3 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h3><p>它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br>它和堆一样，是各个线程所共享的。也同样不需要连续的内存和可以是扩展的，还可以不实现垃圾收集。这个区域的垃圾回收目标主要是针对常量池的回收和对类型的卸载，条件相当苛刻。<br>当方法区无法满足内存分配需求时，将抛出OutOfMemoryError。<br>运行时常量池是方法区的一部分。</p>
 
       
     </div>
@@ -485,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组成"><span class="nav-number">1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区"><span class="nav-number">2.</span> <span class="nav-text">运行时数据区</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组成"><span class="nav-number">1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区"><span class="nav-number">2.</span> <span class="nav-text">运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-程序计数器"><span class="nav-number">2.1.</span> <span class="nav-text">1.程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-虚拟机栈"><span class="nav-number">2.2.</span> <span class="nav-text">2.虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-本地方法栈"><span class="nav-number">2.3.</span> <span class="nav-text">3.本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-堆"><span class="nav-number">2.4.</span> <span class="nav-text">4.堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-方法区"><span class="nav-number">2.5.</span> <span class="nav-text">5.方法区</span></a></li></ol></li></ol></div>
             
 
           </div>
